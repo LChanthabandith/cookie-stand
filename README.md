@@ -35,3 +35,4 @@ I build an app with a direct and powerful purpose. It does all of the things tha
 [Custom Fonts](https://www.youtube.com/watch?v=qgmLDPLApBY)
 
 ### Lighthouse Accessibility Report Score
+![Lighthouse Report](LHREPORT.png)
