@@ -1,5 +1,6 @@
 // Defining an object to represent each location
 // test for branch
+// this is a new
 const locations = [
   { name: 'Seattle', minCust: 23, maxCust: 65, avgCookieSale: 6.3, hourlyCookies: [] },
   { name: 'Tokyo', minCust: 3, maxCust: 24, avgCookieSale: 1.2, hourlyCookies: [] },
