@@ -1,4 +1,5 @@
 // Defining an object to represent each location
+// test for branch
 const locations = [
   { name: 'Seattle', minCust: 23, maxCust: 65, avgCookieSale: 6.3, hourlyCookies: [] },
   { name: 'Tokyo', minCust: 3, maxCust: 24, avgCookieSale: 1.2, hourlyCookies: [] },
@@ -37,7 +38,7 @@ function calculateDailyCookies() {
   }
 }
 
-// Making and calculating the cookies for each location
+// Making call stacks and calculating the cookies for each location
 simulateHourlyCookies();
 calculateDailyCookies();
 
