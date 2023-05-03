@@ -34,5 +34,11 @@ I build an app with a direct and powerful purpose. It does all of the things tha
 
 [Custom Fonts](https://www.youtube.com/watch?v=qgmLDPLApBY)
 
+[JavaScript](https://www.youtube.com/watch?v=ndzAGJin2ZE)
+
+[How to Create Table From an Array of Objects in JavaScript](https://www.youtube.com/watch?v=Wcr_bbMm3J0)
+
+[render()](https://legacy.reactjs.org/docs/react-component.html#render)
+
 ### Lighthouse Accessibility Report Score
 ![Lighthouse Report](LHREPORT.png)
