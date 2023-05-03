@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Sales Page</title>
-  </head>
-  <body>
-    <h1>Sales Data</h1>
-    <div id="sales-data"></div>
-    <script src="app.js"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Stand Sales</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cookie Stand Sales Data</h1>
+  <div id="table-container"></div>
+
+  <script src="app.js"></script>
+  <script>
+    // Inserting table into the table container div
+    const tableContainer = document.getElementById('table-container');
+    tableContainer.appendChild(table);
+  </script>
+</body>
 </html>
