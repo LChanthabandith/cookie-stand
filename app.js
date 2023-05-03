@@ -1,66 +1,86 @@
-// Defining an object to represent each location
-// test for branch
-// this is a new
-const locations = [
-  { name: 'Seattle', minCust: 23, maxCust: 65, avgCookieSale: 6.3, hourlyCookies: [] },
-  { name: 'Tokyo', minCust: 3, maxCust: 24, avgCookieSale: 1.2, hourlyCookies: [] },
-  { name: 'Dubai', minCust: 11, maxCust: 38, avgCookieSale: 3.7, hourlyCookies: [] },
-  { name: 'Paris', minCust: 20, maxCust: 38, avgCookieSale: 2.3, hourlyCookies: [] },
-  { name: 'Lima', minCust: 2, maxCust: 16, avgCookieSale: 4.6, hourlyCookies: [] }
-];
+class CookieStand {
+  constructor(name, minCust, maxCust, avgCookieSale) {
+    this.name = name;
+    this.minCust = minCust;
+    this.maxCust = maxCust;
+    this.avgCookieSale = avgCookieSale;
+    this.hourlyCookies = [];
+    this.dailyCookies = 0;
+  }
 
-// Generating a random number of customers per hour
-for (const location of locations) {
-  location.getRandomCust = function () {
+  getRandomCust() {
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-  };
-}
+  }
 
-// Creating a function to calculate and store the simulated amounts of cookies purchased for each hour at each location
-function simulateHourlyCookies() {
-  for (const location of locations) {
+  simulateHourlyCookies() {
     const hourlyCookies = [];
 
     for (let hour = 6; hour <= 19; hour++) {
-      const cust = location.getRandomCust();
-      const cookies = Math.round(cust * location.avgCookieSale);
+      const cust = this.getRandomCust();
+      const cookies = Math.round(cust * this.avgCookieSale);
       hourlyCookies.push(cookies);
     }
 
-    location.hourlyCookies = hourlyCookies;
+    this.hourlyCookies = hourlyCookies;
+  }
+
+  calculateDailyCookies() {
+    const dailyCookies = this.hourlyCookies.reduce((sum, cookies) => sum + cookies);
+    this.dailyCookies = dailyCookies;
+  }
+
+  render(table) {
+    const row = document.createElement('tr');
+    const nameCell = document.createElement('td');
+    nameCell.textContent = this.name;
+    row.appendChild(nameCell);
+
+    for (const cookies of this.hourlyCookies) {
+      const cell = document.createElement('td');
+      cell.textContent = cookies;
+      row.appendChild(cell);
+    }
+
+    const totalCell = document.createElement('td');
+    totalCell.textContent = this.dailyCookies;
+    row.appendChild(totalCell);
+
+    table.appendChild(row);
   }
 }
 
-// Making a function to calculate the total cookies sold in a day for each location
-function calculateDailyCookies() {
-  for (const location of locations) {
-    const dailyCookies = location.hourlyCookies.reduce((sum, cookies) => sum + cookies);
-    location.dailyCookies = dailyCookies;
-  }
+const cookieStands = [
+  new CookieStand('Seattle', 23, 65, 6.3),
+  new CookieStand('Tokyo', 3, 24, 1.2),
+  new CookieStand('Dubai', 11, 38, 3.7),
+  new CookieStand('Paris', 20, 38, 2.3),
+  new CookieStand('Lima', 2, 16, 4.6)
+];
+
+for (const cookieStand of cookieStands) {
+  cookieStand.simulateHourlyCookies();
+  cookieStand.calculateDailyCookies();
 }
 
-// Making call stacks and calculating the cookies for each location
-simulateHourlyCookies();
-calculateDailyCookies();
+const table = document.createElement('table');
 
-// Displaying the results in unordered lists on sales.html
-for (const location of locations) {
-  const list = document.createElement('ul');
-  const header = document.createElement('h2');
-  header.textContent = location.name;
-  list.appendChild(header);
+const headerRow = document.createElement('tr');
+const emptyHeader = document.createElement('th');
+headerRow.appendChild(emptyHeader);
 
-  for (let hour = 6; hour <= 19; hour++) {
-    const hourStr = hour <= 12 ? `${hour}am` : `${hour - 12}pm`;
-    const listItem = document.createElement('li');
-    const cookies = location.hourlyCookies[hour - 6];
-    listItem.textContent = `${hourStr}: ${cookies} cookies`;
-    list.appendChild(listItem);
-  }
+for (let hour = 6; hour <= 19; hour++) {
+  const hourStr = hour <= 12 ? `${hour}am` : `${hour - 12}pm`;
+  const header = document.createElement('th');
+  header.textContent = hourStr;
+  headerRow.appendChild(header);
+}
 
-  const totalItem = document.createElement('li');
-  totalItem.textContent = `Total: ${location.dailyCookies} cookies`;
-  list.appendChild(totalItem);
+const totalHeader = document.createElement('th');
+totalHeader.textContent = 'Daily Location Total';
+headerRow.appendChild(totalHeader);
 
-  document.body.appendChild(list);
+table.appendChild(headerRow);
+
+for (const cookieStand of cookieStands) {
+  cookieStand.render(table);
 }
