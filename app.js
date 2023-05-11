@@ -84,3 +84,30 @@ table.appendChild(headerRow);
 for (const cookieStand of cookieStands) {
   cookieStand.render(table);
 }
+
+const totalsRow = document.createElement('tr');
+const totalsLabelCell = document.createElement('td');
+totalsLabelCell.textContent = 'Hourly Totals';
+totalsRow.appendChild(totalsLabelCell);
+
+let grandTotal = 0;
+
+for (let hour = 0; hour < 14; hour++) {
+  let hourlyTotal = 0;
+
+  for (const cookieStand of cookieStands) {
+    hourlyTotal += cookieStand.hourlyCookies[hour];
+  }
+
+  const totalCell = document.createElement('td');
+  totalCell.textContent = hourlyTotal;
+  totalsRow.appendChild(totalCell);
+
+  grandTotal += hourlyTotal;
+}
+
+const grandTotalCell = document.createElement('td');
+grandTotalCell.textContent = grandTotal;
+totalsRow.appendChild(grandTotalCell);
+
+table.appendChild(totalsRow);

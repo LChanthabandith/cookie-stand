@@ -37,6 +37,17 @@
     tr:nth-child(even) {
       background-color: #f2f2f2;
     }
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+    }
+    .image-gallery img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -87,6 +98,17 @@
   <section>
     <h2>Contact Us</h2>
     <p>Give us a call at 555-555-5555 or send us an email at info@myawesomecookieshop.com</p>
+    <p>Check out our <a href="sales.html">sales</a> for today!</p> <!-- Added anchor tag for the link -->
+
+  <div class="image-gallery">
+    <img src="chinook.jpg" alt="Chinook">
+    <img src="cutter.jpeg" alt="Cutter">
+    <img src="family.jpg" alt="Family">
+    <img src="fish.jpg" alt="Fish">
+    <img src="frosted-cookie.jpg" alt="Frosted Cookie">
+    <img src="salmon.png" alt="Salmon">
+    <img src="shirt.jpg" alt="Shirt">
+  </div>
   </section>
   
   <footer>
