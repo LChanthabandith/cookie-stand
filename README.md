@@ -40,5 +40,7 @@
 
 [Image Gallery Using HTML](https://www.makeuseof.com/image-gallery-html-css-javascript/)
 
+[Window: load event](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event)
+
 ### Lighthouse Accessibility Report Score
 ![Lighthouse Report](LHREPORT.png)

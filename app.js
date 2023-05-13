@@ -29,6 +29,85 @@ class CookieStand {
     this.dailyCookies = dailyCookies;
   }
 
+  render(parentElement) {
+    const locationDiv = document.createElement('div');
+    const locationTitle = document.createElement('h2');
+    locationTitle.textContent = this.name;
+    locationDiv.appendChild(locationTitle);
+
+    const hourlyCookiesList = document.createElement('ul');
+
+    for (let i = 0; i < this.hourlyCookies.length; i++) {
+      const listItem = document.createElement('li');
+      const hour = i + 6 <= 12 ? `${i + 6}am` : `${(i + 6) - 12}pm`;
+      listItem.textContent = `${hour}: ${this.hourlyCookies[i]} cookies`;
+      hourlyCookiesList.appendChild(listItem);
+    }
+
+    locationDiv.appendChild(hourlyCookiesList);
+
+    const totalCookiesItem = document.createElement('li');
+    totalCookiesItem.textContent = `Daily Location Total: ${this.dailyCookies} cookies`;
+    hourlyCookiesList.appendChild(totalCookiesItem);
+
+    parentElement.appendChild(locationDiv);
+  }
+}
+
+window.onload = function() {
+  const cookieStands = [
+    new CookieStand('Seattle', 23, 65, 6.3),
+    new CookieStand('Tokyo', 3, 24, 1.2),
+    new CookieStand('Dubai', 11, 38, 3.7),
+    new CookieStand('Paris', 20, 38, 2.3),
+    new CookieStand('Lima', 2, 16, 4.6)
+  ];
+
+  for (const cookieStand of cookieStands) {
+    cookieStand.simulateHourlyCookies();
+    cookieStand.calculateDailyCookies();
+  }
+
+  const outputDiv = document.getElementById('output');
+
+  for (const cookieStand of cookieStands) {
+    cookieStand.render(outputDiv);
+  }
+};
+
+/*
+OLD ORIGINAL CODE IN TABLE FORMAT. KEEP JUST IN CASE!
+class CookieStand {
+  constructor(name, minCust, maxCust, avgCookieSale) {
+    this.name = name;
+    this.minCust = minCust;
+    this.maxCust = maxCust;
+    this.avgCookieSale = avgCookieSale;
+    this.hourlyCookies = [];
+    this.dailyCookies = 0;
+  }
+
+  getRandomCust() {
+    return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
+  }
+
+  simulateHourlyCookies() {
+    const hourlyCookies = [];
+
+    for (let hour = 6; hour <= 19; hour++) {
+      const cust = this.getRandomCust();
+      const cookies = Math.round(cust * this.avgCookieSale);
+      hourlyCookies.push(cookies);
+    }
+
+    this.hourlyCookies = hourlyCookies;
+  }
+
+  calculateDailyCookies() {
+    const dailyCookies = this.hourlyCookies.reduce((sum, cookies) => sum + cookies);
+    this.dailyCookies = dailyCookies;
+  }
+
   render(table) {
     const row = document.createElement('tr');
     const nameCell = document.createElement('td');
@@ -111,3 +190,4 @@ grandTotalCell.textContent = grandTotal;
 totalsRow.appendChild(grandTotalCell);
 
 table.appendChild(totalsRow);
+*/

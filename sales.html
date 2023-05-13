@@ -5,31 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cookie Stand Sales</title>
   <style>
-    table {
-      border-collapse: collapse;
+ div {
       width: 100%;
+      margin-bottom: 20px;
+      border: 1px solid black;
+      padding: 8px;
     }
-    th, td {
+    h2 {
+      background-color: #f2f2f2;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
       border: 1px solid black;
       padding: 8px;
       text-align: center;
-    }
-    th {
-      background-color: #f2f2f2;
     }
   </style>
 </head>
 <body>
   <h1>Cookie Stand Sales Data</h1>
-  <div id="table-container"></div>
+  <div id="output"></div>
 
   <a href="index.html">Go to Home</a> <!-- Added anchor tag for the link -->
 
   <script src="app.js"></script>
-  <script>
-    // Inserting table into the table container div
-    const tableContainer = document.getElementById('table-container');
-    tableContainer.appendChild(table);
-  </script>
 </body>
 </html>
