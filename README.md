@@ -42,5 +42,11 @@
 
 [Window: load event](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event)
 
+[VScode img folder location](https://stackoverflow.com/questions/68594456/vscode-img-folder-location)
+
+[What is DRY Code](https://codinglead.co/javascript/what-is-DRY-code)
+
+[Use DRY to write cleaner code](https://www.youtube.com/watch?v=rWpJt5CRDek)
+
 ### Lighthouse Accessibility Report Score
 ![Lighthouse Report](LHREPORT.png)
